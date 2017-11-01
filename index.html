@@ -13,17 +13,32 @@
 
     <script type="text/babel">
 
-      class Greeting extends React.Component {
+      class Counter extends React.Component {
         render() {
           return (
             <div>
-              <h1>Hello {this.props.name}!</h1>
+              <img src={this.props.image} alt="Bloc Logo"/>
+              <h2>Current program: {this.props.label}</h2>
+              <p>Current Date: {this.props.date.toLocaleDateString()}</p>
             </div>
           );
         }
       }
 
-      ReactDOM.render(<Greeting name="Bloc Student"/>, document.getElementById('app'));
+      const info = {
+        date: new Date(),
+        image: 'https://avatars0.githubusercontent.com/u/1441485?v=4&s=280',
+      }
+
+      Counter.defaultProps = {
+        label: "Software Developer Track"
+      }
+
+      ReactDOM.render(
+        <Counter
+          date={info.date}
+          image={info.image}/>, document.getElementById('app')
+      );
 
     </script>
   </body>
